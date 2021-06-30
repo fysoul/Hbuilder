@@ -1,0 +1,40 @@
+header{width: 100%;height: 60px;color: white;line-height: 60px;position: fixed;
+      top: 0;left: 0;}
+header>div{float: left;}
+header #menu{width: 20%;height: 100%;background:rgba(0,0,0,1);font-size: 12px;
+       position: relative; font-weight: 800;}
+header #caption1{width: 60%;height:100%;background:rgba(0,0,0,1);font-weight: 800;
+       text-align: center; font-size: 20px;}
+header .logIn{width: 20%;height:100%;background:rgba(255,0,0,0.8);text-align: center;
+       font-weight: 800;font-size: 20px;}
+header img{width: 40px;margin: 10px;vertical-align: middle;margin-right: 0px;}
+
+
+header #menu_d{width:200px;height: 600px;background:rgba(0,0,0,0.8);position: absolute;
+     left:-200px;top:60px;z-index: 9;}
+header #menu_d input{display: block; width: 90%;height:25px;margin:40px auto 20px auto;
+       text-indent: 15px;font-size: 16px;}     
+header #menu_d button{display: block; width: 50%;height:30px;margin:10px auto;
+       font-size: 16px;font-weight: 500;text-align: center;line-height: 30px;cursor: pointer;}
+header #menu_d button:hover{background: rgba(255,0,0,0.4);color: white;}
+
+
+
+header #login{position:fixed;width: 400px;height: 300px;padding: 20px;
+left: 30%;top:30%;background:white;z-index:20;display: none;}
+header #login form{text-align: center;}
+header #login form input{text-indent: 15px;height: 30px;width: 300px;margin: 20px 45px;border-radius: 2px;
+       border: 1px solid gray;}
+header #login form input[type=submit],#login form input[type=button]{width:105px;text-indent:0px;text-align: center;
+       cursor: pointer; font-size: 16px;} 
+header #login form input[type=submit]{background:rgba(0,0,255,0.8);color: white;}
+header #login form input[type=submit]:hover{opacity: 0.9;}
+header #login h3{font-size: 24px;width: 100%;text-align: center;margin-top: 20px;}
+header #login form input[type=text]{margin-top:5px;}
+header #login img{position: absolute;width: 20px;height: 20px;}
+header #login img:nth-child(1){left:200px;top: 10px;}
+header #login img:nth-child(4){left:100px;bottom: 10px;}
+header #login img:nth-child(5){left:200px;bottom: 10px;}
+header #login img:nth-child(6){left:300px;bottom: 10px;}
+header #login_cover{position: fixed;width: 100%;height: 100%;background: rgba(0,0,0,0.5);
+       display: none; left:0;top:8%;z-index: 9;}

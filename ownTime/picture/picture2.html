@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../jquery-3.1.1.min.js" ></script>
+		<link rel="stylesheet" href="picture_header.css" />
+		<link rel="stylesheet" href="picture_article.css" />
+		<link rel="stylesheet" href="picture_footer.css" />
+		<style>
+		*{margin: 0px;padding: 0px;border: none;outline: none;border: none;text-decoration: none;}
+		   html{height: 100%;}
+		   body{box-sizing: border-box;width: 100%;height: 100%;-webkit-user-select:none;}
+		   ul,ol{list-style-type: none;}
+		   /*#picture_add{width: 60px;height: 30px;background: red;}
+		   #input_add{width: 300px;height: 30px;border: 1px solid;}*/
+		</style>
+	</head>
+	<body onload="abc(li_w,li_h)">
+		<header>
+			<div id="menu">
+				<!--<input id="input_add" type="text" placeholder="请添加URL地址" />
+		        <button id="picture_add">添加</button>-->
+		        <img src="../ico/菜单.png" />MENU
+		        <div id="menu_d"><!--pattern="[A-Za-z]{3}"表单--> 
+		        	<input id="input_add" type="text" placeholder="请上传图片地址" />
+		            <button id="picture_add">ONLOAD</button>
+		        </div>
+			</div>
+			<div id="caption1">OWNTIME</div>
+			<div id="login">LOGIN</div>
+		</header>
+		
+		<article>
+	       <ul id="first_ul">
+	         <li class="li1"><img src="../img/10.jpg"></li>
+	         
+	       </ul>
+	       
+	       <div id="check">
+	       	   <div id="check_div1"></div>
+	       	   <div id="check_div2"></div>
+	       </div>
+	       <div id="check_left"><img  src="../ico/向左.png" /></div>
+	       <div id="check_right"><img  src="../ico/向右.png" /></div>
+	       <div id="check_close"><img  src="../ico/关闭眼睛.png" /></div>
+	       <!--像img这种行内块级元素如果直接设置display为none，有可能无效，最好是用个块元素包裹-->
+	       <ul id="second_ul">
+	       	 <li><a href="picture1.html" target="_parent">首页</a></li>
+	       	 <li><a href="picture2.html" target="_parent">2</a></li>
+	       	 <li><a href="picture3.html" target="_parent">3</a></li>
+	       	 <li><a href="#">4</a></li>
+	       	 <li><a href="#">5</a></li>
+	       	 <li><a href="#">6</a></li>
+	       	 <li id="li_not">•••</li>
+	       	 <li><a href="#">10</a></li>
+	       	 <li><a id="li_next" target="_blank">下一页</a></li>
+	       	 <span>到第</span>
+	       	 <input type="text" id="ul_input" />
+	       	 <span>页</span>
+	       </ul>
+	    </article>
+	    
+        <footer>
+           <a id="scrollUp" title="飞回顶部">
+           	<img src="../ico/顶部.png" />
+           </a>
+           <div id="footer_div1">
+           	<span></span>
+           	<span></span>
+           	<span></span>
+           </div>
+           <div id="div_middle">
+           	 <a href="#">@2325246289qq.com</a>
+           </div>
+           <div id="footer_div2"></div>
+           <ul id="contextMenu">
+			  <li>纯净模式<span>Shift+C</span></li>
+			  <li>模式开启<span>Shift+K</span></li>
+			  <li>指令说明<span>Ctr+Shift+S</span></li>
+		   </ul>
+		   <div id="report">Copy To Lift</div>
+		   <div id="mask">
+		   <div id=warn><!--警告框-->
+		   	  <div>
+		   	  	<span id="warn_first"></span>
+		   	    <span id="warn_last"></span>
+		   	  </div>
+		   	  <input type="button" value="确定"/>
+		   	  <input type="button" value="取消"/>
+		   </div>
+		   </div>
+        </footer>
+        <!--<form action="picture2.html" method="get">
+        	<input type="text"name="text" />
+        	<input type="submit" />
+        </form>-->
+        <!--全局变量       -->
+        <script>
+        	var toggle=0;
+	    	var li_w=$('.li1').width();
+	    	var li_h=$('.li1').height();
+	    	var img_w=[];
+	    	var img_h=[];
+	    	var img_src=[];
+	    	var index;
+	    	var a_number;
+//	    	var eventNumber;
+//	    	因为要设置宽高自适应li标签，所以再次获取会改变img宽高的数组,
+//          需要进行判断是否添加了(即数组是否为空),添加了就不改变原来的数组,
+//          在数组里面多加一个添加图片的宽高
+	    	var body_h=document.body.clientHeight;
+	    	var body_w=document.body.clientWidth;
+	    	var status=0;
+	    	var li;
+	    	var html_number=parseInt(location.href.split("picture")[2].split('.')[0]);
+        </script>
+          
+        <!--abc函数-img宽高适应li元素宽高-->
+	    <script>
+	    function abc(x_w,y_h){
+	    	li=$('#first_ul li').length;
+//          不能添加到全局,因为要延迟获取到li的数量
+              if(img_w==""){
+              	for (var i=0;i<li;i++) {
+//	    		var h1=$('#first_ul li:nth-child('+i+')');因为img分开在li里不能用这种方法
+	    		img_w[i]=$('#first_ul li img').eq(i).width();
+	    		img_h[i]=$('#first_ul li img').eq(i).height();
+	    		img_src[i]=$('#first_ul li img').eq(i).attr('src');
+	    		//等图片加载完才能获取到
+	    	    }
+              }else{
+              	img_w[$('#first_ul img').length-1]=$('#first_ul img:last').width();
+                img_h[$('#first_ul img').length-1]=$('#first_ul img:last').height();
+                img_src[$('#first_ul img').length-1]=$('#first_ul img:last').attr('src');
+              }
+        for(var j=0;j<li;j++){	
+            if(img_w[j]>=img_h[j]){
+            	if(img_w[j]>x_w){
+//          		img_w[j]=li_w;
+            		$('#first_ul li img').eq(j).width(x_w);	
+            	}
+            	if(img_h[j]>y_h){
+	    		    $('#first_ul li img').eq(j).height(y_h);
+	    		}else{
+	    			$('#first_ul li img').eq(j).height(img_h[j]);
+	    			//指定高，保证不会出现上边距的不一致
+	    			$('#first_ul li img').eq(j).css('margin-top',(y_h-img_h[j])/2);
+	    		}
+            	
+	    	}else{
+	    		if(img_h[j]>y_h){
+	    		    $('#first_ul li img').eq(j).height(y_h);
+	    		}else{
+	    			$('#first_ul li img').eq(j).css('margin-top',(y_h-img_h[j])/2);
+	    		}
+	    		if(img_w[j]>x_w){
+//	    			img_h[j]=li_h;
+	    		    $('#first_ul li img').eq(j).width(x_w);
+	    		}
+	    		
+	    	}  		
+        }  
+        
+        $('img').css('display','inline-block');
+        //图片显示会先比for和if先被执行，for和if他们才能获取到图片的宽高
+        //这种在html加载完毕后再显示，不会出现图片原来位置大小的影子，注意img是行内块级元素
+	    }
+	    </script>
+    
+	    <!--js方法添加图片到li元素中-->
+	    <script>   	
+            	$('#picture_add').off('click').on('click',function(){
+            		var picture=document.createElement('img');
+                    picture.src=$('#input_add').val();
+	    	        var ul=document.getElementById('first_ul')
+	    	        ul.appendChild(picture)
+	    	        $('#first_ul img:last').wrap("<li style='border-color:transparent;'></li>");
+//	    	        img_w[$('#first_ul img').length-1]=$('#first_ul img:last').width();
+//                  img_h[$('#first_ul img').length-1]=$('#first_ul img:last').height();
+//                  因为图片初始设置为none,所以这样获取不到图片的宽高
+            	    setTimeout('abc(li_w,li_h)',50)
+            	    //要在bcd函数后面执行才能获取到，因为bcd有img加载时间传递参数达不到效果
+                    setTimeout(function(){
+                    	  $('#first_ul li:last').css('border-color','black')
+                    	},100)
+                    
+                    
+                    function onload(){
+                    $('#first_ul img:last').css('display','inline-block');
+                    if($('#first_ul img:last').width()<=16){
+                    	$('#first_ul img:last').parent().remove();
+                    	warn('上传的地址错误','图片可能小于1KB')
+                    	sure()
+                    }
+                }   
+                setTimeout(onload,52);
+                    
+            function repeat(){
+            	 for(var k=0;k<li;k++){
+                    if($('#input_add').val()==img_src[k]){
+                    	var eventNumber=0;    	
+	    		}
+	    	};
+            	 if(eventNumber==0){
+	    	    	warn('图片可能存在重复,是否继续添加')
+                    sure(eventNumber)   
+	    	    }//图片重复函数    
+            }
+            setTimeout(repeat,51);  
+            	})
+            	
+            	
+            	$('#input_add').blur(function(){
+            		setTimeout(function(){
+            			$('#input_add').val("")
+            		},200)
+                //由于确保添加函数函数先执行才能获取到input里面的值所以要添加延迟时间
+            	})
+        </script>
+        
+        <!--事件委托-移入移出改变li元素边框的样式-->
+        <script>
+        	$(document).on('mouseenter','#first_ul li',function(){
+        		$(this).css('border-color','rgba(0,0,0,0.4)')
+        	});
+        	$(document).on('mouseleave','#first_ul li',function(){
+        		$(this).css('border-color','black')
+        	})//事件委托
+        </script>
+        
+        <!-- 动态左右切换菜单栏-->
+        <script>
+		   $('#menu_d').height(body_h-60);
+		   $('header').siblings().click(function(){//除了$('#menu_d')外怎么搞
+		   	    $('#menu_d').animate({left:-200})
+		   	    toggle=0;
+		    })
+		   
+		   
+           $('#menu img').click(function(){
+              if(toggle==0){
+              	$('#menu_d').animate({left:toggle});
+              	toggle=-200;
+              }else{
+              	$('#menu_d').animate({left:toggle});
+              	$('header').siblings().css('opacity',1)
+              	toggle=0;
+              }
+              return false  
+           });
+        </script>
+        
+        
+        <!--图片预览设置-->
+        <script>
+        	function preview(index){
+//      		index=$('#first_ul img').index($(this));
+        		var clone=$('#first_ul img').eq(index).clone();//克隆
+        		$('#check').append(clone);
+                $('#check').width(body_w);
+                $('#check').height(body_h-60);
+                
+                var check_w=$('#check').width();
+                var check_h=$('#check').height();
+                $('#check img').width(img_w[index]);
+                $('#check img').height(img_h[index]);
+                if(img_w[index]>=img_h[index]){
+                	if(img_w[index]>check_w){
+                		$('#check img').width(check_w);
+                	}
+                	
+                	if (img_h[index]>check_h) {
+                		$('#check img').height(check_h);
+                	}else{
+                		$('#check img').height(img_h[index]);//指定高，保证不会出现上边距的不一致
+                		$('#check img').css('margin-top',(check_h-img_h[index])/2);
+                	}
+	
+                }else{
+                	if(img_w[index]>check_w){
+                		$('#check img').width(check_w);
+                	}
+                	
+                	if (img_h[index]>check_h) {
+                		$('#check img').height(check_h);
+                	}else{
+                		$('#check img').css('margin-top',(check_h-img_h[index])/2);
+                	}
+                	
+                }
+                
+//              $(this).parent().hide()
+//              $('#first_ul li').eq(index).hide()
+                $('#check_left').css({
+           	        top:body_h/2,
+           	        left:$('#check_div1').width()/2-20,
+           	        display:'block'
+                })
+                $('#check_right').css({
+           	        top:body_h/2,
+           	        left:body_w-$('#check_div2').width()/2-20,
+           	        display:'block'
+                })
+                $('#check_close').css({
+           	        top:80,
+           	        left:body_w-$('#check_div2').width()/2-20,
+           	        display:'block'
+                })
+        	}
+        	$(document).on('click','#first_ul img',function(){
+        		index=$('#first_ul img').index($(this));
+        		preview(index);
+        	});//事件绑定
+        </script>
+        
+        <!--自定义菜单-->
+        <script>
+			$(document).contextmenu(function(event){
+				$('#contextMenu').show();
+				
+           	    $('#contextMenu').offset({
+           	   	    top:event.pageY,
+           	   	    left:event.pageX
+           	   })
+           	    
+           	    $(this).click(function(){
+            	    $('#contextMenu').hide()
+                })
+				return false;
+			});
+		</script>
+        
+        <!--纯净模式打开和解除-->
+        <script>
+        	
+			function contextMenu(event){
+				var contextMenu_li1=$('#contextMenu li:first-child').val();
+				var check_show=$('#check').width()
+				if(check_show>10){//判断预览框里面存在图片在触发
+                 if(event.shiftKey&&event.keyCode==67||contextMenu_li1==1){  
+			       if(status==0){
+			       	  $('#check_div1').add('#check_div2').hide();
+                      $('#check_left').add('#check_right').add('#check_close').hide();
+                      $('#contextMenu li:first-child').html('解除纯净<span>Shift+J</span>')
+                      $('#check').siblings().css('opacity',0.1);
+                      $('#contextMenu').siblings().css('opacity',0.1);
+                      status=1;
+			       }else{
+			       	  $('#check_div1').add('#check_div2').show();
+                      $('#check_left').add('#check_right').add('#check_close').show();
+                      $('#contextMenu li:first-child').html('纯净模式<span>Shift+C</span>')
+                      $('#check').siblings().css('opacity',1);
+                      $('#contextMenu').siblings().css('opacity',1);
+                      
+                      status=0;
+			       }
+                }
+                
+             }  
+
+			}
+			$(document).keydown(function(event){
+				contextMenu(event)
+			})
+			$('#contextMenu li:first-child').click(function(event){
+				
+				$(this).val(1)
+				contextMenu(event)
+			})
+		</script>
+		
+		<!--关闭图片预览-->
+		<script>
+			function close(){
+				$('#check img').remove();
+				$('#check').css({
+					width:0,
+					height:0
+				})
+				
+				$('#check_left').hide();
+				$('#check_right').hide();
+				$('#check_close').hide();
+			}
+            $('#check_close').click(close)
+		</script>
+		
+		<!--提示函数-->
+        <script>
+        	function tips(value){
+        		$('#report').css({
+        			top:body_h/2-10,
+        			left:body_w/2-300,
+        			letterSpacing:'5px',
+        			background:'grey'
+        		})
+        		$('#report').html(value)
+        		$('#report').show(50).animate({left:body_w/2-150},300).delay(900).hide(1);
+        	}
+        	</script>
+        	
+        <!--预览图片切换-->
+        <script>
+        	$('#check_left').click(function(){
+               $('#check img').remove();
+               if(index==0){
+               	 index=$('#first_ul li img').length;
+               }
+            var preindex=index-1;
+               preview(preindex);
+               index--;
+               if(index==0){
+               	index=$('#first_ul li img').length;
+               	tips('当前位置第一张图片');
+               }           
+//             alert(index)
+//             index=$('#first_ul li img').length;img_w.length=7
+//             alert(img_h[6])
+               return false;
+        	})
+        	
+        	$('#check_right').click(function(){
+               $('#check img').remove();
+               if(index==$('#first_ul li img').length-1){
+               	 index=-1
+               }
+            var preindex=index+1;
+               preview(preindex);
+               index++;
+               if(index==$('#first_ul li img').length-1){
+               	index=-1;
+               	tips('当前位置最后一张图片');
+               }
+        	})
+        </script>
+        <!--缩放窗口在点击预览会失败-->
+        
+        <!--警告框-->
+        <script>
+        	function warn(value1,value2){
+        		$('#mask').show();
+        		$('#warn>div span').eq(0).html(value1)
+        		if(value2){
+        			$('#warn span').eq(1).css({
+        				display:'block',
+        				textAlign:'center'
+        			});
+        		    $('#warn span').eq(1).html(value2)
+        		}	
+        	}
+        </script>
+        
+        <!--警告框里面的确定和取消事件-->
+        <script>
+        	function sure(eventNumber){
+        	$('#warn input:first').click(function(){
+        			$('#mask').hide();
+        			$('#warn>div span:last').hide();
+        			$('#warn #warn_last').html("")
+        		})
+
+//      		$('#warn input:last').click(function(){
+//      			$('#mask').hide();
+//      			$('#warn>div span:last').hide();
+//      			$('#warn #warn_last').html("")
+//      			if(eventNumber==0){//通过事件编号来确定对应执行的代码
+////      				$('#first_ul img:last').parent().remove();
+//      				alert('88')
+//      			}
+//      		})
+        		$('#warn input:last').off('click').on('click',function(){
+        			$('#mask').hide();
+        			$('#warn>div span:last').hide();
+        			$('#warn #warn_last').html("")
+        			if(eventNumber==0){//通过事件编号来确定对应执行的代码
+        				$('#first_ul img:last').parent().remove();
+        			}
+        			
+        		})	
+        	}
+        </script>
+        
+        
+       <!-- 跳转到页数-->
+        <script>
+        	$('#ul_input').keydown(function(event){
+        		$(this).val()
+        		if(event.keyCode==13){
+        			open('picture'+$(this).val()+'.html');
+        		}
+        })//存在问题
+        </script>
+        
+       
+        <script>
+        	
+        	var time=new Date();
+        	var timeArray=['日','一','二','三','四','五','六']
+            var times=time.toLocaleTimeString().slice(2);
+            $('#footer_div1 span').eq(0).html('DATE：'+" "+time.toLocaleDateString())
+            $('#footer_div1 span').eq(1).html('WEEK：'+" "+'星期'+timeArray[time.getDay()]);
+            $('#footer_div1 span').eq(2).html('TIME：'+" "+times)
+            //因为setInterval有延迟，所以在页面刷新开始就执行
+            
+            function getTime(){
+            var time=new Date();
+        	var timeArray=['日','一','二','三','四','五','六']
+            var times=time.toLocaleTimeString().slice(2);
+            $('#footer_div1 span').eq(0).html('DATE：'+" "+time.toLocaleDateString())
+            $('#footer_div1 span').eq(1).html('WEEK：'+" "+'星期'+timeArray[time.getDay()]);
+            $('#footer_div1 span').eq(2).html('TIME：'+" "+times)
+            
+            };
+            setInterval(getTime,1000)
+        </script>
+        
+        
+        <!--飞回顶部-->
+        <script>
+        	$('footer>a').click(function(){
+        		$('body,html').animate({
+        			scrollTop:0
+        		},200);
+
+        	})
+
+            $(window).scroll(function(){
+            	
+            	var top=$(document).scrollTop()
+            	if(top>=body_h){
+            		$('footer>a').show()
+            	}else{
+            		$('footer>a').hide()
+            	}
+            })    
+        </script>
+        
+        <script>
+        	$('#li_next').click(function(){
+           	   $(this).attr('href','picture'+(html_number+1)+'.html')
+          })
+        </script>
+	</body>
+</html>

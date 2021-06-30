@@ -1,0 +1,46 @@
+/*footer a{width: 60px;height: 60px;background: red;display: block;}*/
+footer{width: 100%;height:120px;background:rgba(0,0,0,0.5);display: flex;
+    justify-content: space-around;color: white;}
+footer>div{width: 30%;height: 100%;float: left;}
+footer #div_middle{width:200px;height: 100%;
+   float: left; margin:0px auto;}
+footer #div_middle a{width: 100%;height: 30px;display: block;color:white;
+       margin-top: 50px;text-align: center;line-height: 30px;}
+   
+footer #footer_div1{box-sizing: border-box;/*text-align: center;*/}
+footer #footer_div1 span{display:block;width: 80%;height:30px;/*background: orange;*/
+       margin: 0px auto;line-height:30px;margin-top:8px;}  
+   
+   
+   
+   
+
+#contextMenu{width: 200px;height: 300px;display: none;cursor: pointer;
+			position: absolute;left: 800px;top: 200px;border-radius:5px;
+			list-style-type: none;padding: 20px;background:rgba(0,0,0,0.8);}
+#contextMenu li{margin-bottom: 20px;color:white;}
+#contextMenu li span{margin-left: 40px;}		
+#report{width:300px;height: 30px;position: absolute;line-height: 30px;position: fixed;
+		color:white;font-size: 14px;text-align: center;opacity: 0.6;display: none;}
+#warn{width: 300px;height: 200px;overflow: hidden;margin:60px auto;
+     background: url(../ico/警告.png) 135px 10px/30px 30px no-repeat gainsboro;}
+
+#warn>div{width:220px;height: 100px;margin: 50px 40px 0px;}
+#warn>div span{display: block; width: 220px;height: 30px;margin-bottom:0px;
+      line-height: 30px;text-align: center;}
+#warn input{width:80px;height: 30px;background:rgba(255,0,0,0.9);
+      font-size: 16px;color: white;cursor: pointer;margin:0 40px;margin-right: 16px;}
+#warn input:hover{opacity: 0.8;}
+#warn>div span:first-child+span{display: none;}
+footer #mask{width:100%;height: 1200px;position:fixed;background: transparent; top: 0px;left: 0px;display:none;}
+
+
+
+
+
+/*form{width: 400px;height: 300px;border: 1px solid;}
+form input:first-child{width: 200px;height: 30px;border: 5px solid;}*/
+
+footer>a img{width: 40px;height: 40px;position: fixed;right: 20px;bottom: 30px;
+            }
+footer>a{display: none;}     

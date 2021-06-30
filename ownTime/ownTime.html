@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+		<link rel="stylesheet" href="header.css" />
+		<link rel="stylesheet" href="article.css" />
+		<link rel="stylesheet" href="footer.css" />
+		<style>
+			*{margin: 0px;padding: 0px;border: none;outline: none;border: none;text-decoration: none;}
+			html{height: 100%;background: url(img/a11.jpg) 0 0/100% 100%;}
+			body{width: 100%;height:100%;
+			    /*-webkit-user-select:none;*/}/*禁止被选中，但是怎么才能用js或者jquery解除啊*/
+		</style>
+	</head>
+	<body>
+		
+		<header>
+			<div>
+				<div class="menu"><img  src="ico/menu.png">&nbsp;MENU
+				    <div id="menu_img">转发<img src="ico/上.png">
+				    <span></span></div>   
+				</div>
+				<div class="title">
+					<h3 class="sousuo"><img src="ico/搜索3.png">
+					<input type="text"/>
+					<span id="sou">SEARCH</span></h3>
+					<h3 class="biaoti">OWNTIME</h3>
+					<h5>Is it used for the first time&nbsp;&nbsp;</h5>
+			    </div>
+				<h3 class="logIn">LOGIN</h3>
+			</div>
+			
+			<div id="login"><!--登录框-->
+			    <img src="ico/圆1.png" />
+			    <h3>THE LOGIN</h3><!--登<!--&nbsp;&nbsp;录---->
+			    <form action="http://localhost:8080/ownTime/user.jsp">
+			       <input type="text" placeholder="你的手机号/邮箱" name="name" /><br />
+			       <input type="password" placeholder="密码" name="password" /><br />
+			       <input type="submit" value="登录" />
+			       <input type="button" value="注册" />
+			    </form>
+			  
+			    <img src="ico/external_qq.png"/>
+			    <img src="ico/微信.png"/>
+			    <img src="ico/邮箱.png"/>
+			</div>
+			<div id="login_cover"></div>
+		</header>
+		
+		<article>
+			<div id="article_time">Site of the Day<br />
+				<span></span><span></span>    
+			</div>
+			
+			<div id="user_div">
+				<span>LOGOUT</span>
+				<span>爱在深秋</span>
+				<img src="ico/默认头像1.png">
+			</div>
+			
+			<div id="Dmenu">
+				<table border="1px" bordercolor="red" >
+					<!--<caption>标题</caption>writing-mode: tb-rl;-->
+					<tr><td id="td1" rowspan="2">学习</td><td>前&nbsp;端</td><td>技&nbsp;术</td></tr>
+					<tr><td>后&nbsp;端</td><td>•••••</td></tr>
+					<th style="height: 40px;"></th>
+					<tr><td id="td1" rowspan="2">娱乐</td><td>游&nbsp;戏</td><td>音&nbsp;乐</td></tr>
+					<tr><td>图&nbsp;片</td><td>推&nbsp;荐</td></tr>
+					<th style="height: 40px;"></th>
+					<tr><td id="td1" rowspan="2">资料</td><td>个人信息</td><td>工作资料</td></tr>
+					<tr><td>其他文件</td></tr>
+					<!--<th style="height: 40px;"></th>
+					<tr><td id="td1" rowspan="2">资料</td><td>个人信息</td><td>工作资料</td></tr>
+					<tr><td>其他文件</td></tr>-->
+				</table>
+				<input type="text" /><button><a href="" target="_blank">upload</a></button>
+				<img src="ico/向右.png" />
+				<!--<div id="Dmenu_cover"></div>-->
+				<div id="cover_shine"><div id="shine"></div></div>
+			</div>
+		<div id="a_switch"><img src="ico/转换.png"></div>
+		</article>
+		
+		
+		<footer>
+		<ul id="contextMenu">
+			<li>复制解除<span>Shift+J</span></li>
+			<li>模式开启<span>Shift+K</span></li>
+			<li>指令说明<span>Ctr+Shift+S</span></li>
+		</ul>
+		<div id="report">Copy To Lift</div>
+		</footer>
+		
+		<script>
+			var booReport=false;
+			var numberReport=0;
+			var numberSwitch=0;
+		</script>
+		
+		<script>
+			var a=document.body.clientHeight;
+			var b=new Date();
+			var c=b.toDateString()
+			var d=c.split(" ");
+			$('article>div span:first').html(d[1]+' '+d[2]+'•')
+			$('article>div span:first+span').html(d[3]);
+			
+			var f=$('header>div').css('height');
+			var e=$('header>div').css('line-height',f);
+			//设置header子元素div的行高
+		</script>
+		
+		
+		<script>
+			$(document).contextmenu(function(event){
+				$('#contextMenu').show();
+				
+           	    $('ul').offset({
+           	   	    top:event.pageY,
+           	   	    left:event.pageX
+           	   })
+           	    
+           	    $(this).click(function(){
+            	    $('ul').hide()
+                })
+				return false;
+			});
+			
+//			$(document).click(function(){
+//				$('.sousuo img').show().siblings().hide();
+//			})
+			
+			
+			document.body.oncopy=function(){
+				return false;
+			};
+			document.body.onselectstart=function(){
+				return false;//禁止被选中，这种方式可以用js或jquery解除
+			}
+		</script>
+		
+		
+		
+		<script>
+			var report_h=$('article').height()/2-10;
+			var report_w=$('article').width()/2-150;
+			$('#report').css('left',report_w);
+			$('#report').css('top',report_h);
+//          alert(report_h)
+           
+		</script>
+		
+		<script>
+			function contextMenu(event){
+//                  $(document).select('auto');
+//                  alert($('body').select())
+//                  document.body.style.
+                    document.body.onselectstart=function(){
+				       return true;//禁止被选中
+			       }
+                var contextMenu_li1=$('#contextMenu li:first-child').val();
+                if(event.shiftKey&&event.keyCode==74||contextMenu_li1==1){   
+                   document.body.oncopy=function(){
+				      return true;
+			        };
+			        booReport=true;
+			        
+			        if(booReport==true&&numberReport==0){
+            	        $('#report').show(200).delay(700).hide(1);
+            	        booReport=false;
+            	        numberReport=1;
+                    }
+			        
+				}
+			
+			}
+			
+			$(document).keydown(function(event){
+				contextMenu(event)
+			})
+			$('#contextMenu li:first-child').click(function(event){
+				$(this).val('1')
+				contextMenu(event)
+			})
+		</script>
+		
+		<!--头部搜索-->
+		<script>
+			
+			$('.sousuo img').click(function(event){
+				$(this).hide();
+				$('.sousuo span').show();
+				$('.sousuo input').css({
+					display:'inline-block',
+					borderRadius:'15px 0px 0px 15px',
+					height:'30px',
+					width:'200px',
+					marginTop:'11px'
+				})
+				$('.sousuo input').focus()
+				$('.sousuo input').attr('placeholder','有bug，文字多时光标不能缩进')
+			  event.stopPropagation();
+			$('header').siblings().click(function(event){
+            	$('.sousuo img').show().siblings().hide();
+			})
+			
+			})//固定值，有缺陷
+//			alert(f/2);转成nuber在计算
+		</script>
+		
+		<!--副菜单-->
+		<script>
+			var Dmenu_h=-263;
+			$('#Dmenu img').click(function(){
+				
+				if(Dmenu_h==-263){
+				$('#Dmenu').animate({
+					left:0
+				},500)
+				     Dmenu_h=0;
+				}else{
+					$('#Dmenu').animate({
+					left:-263
+				},500)
+					Dmenu_h=-263;
+				}
+			})
+		</script>
+		<!--用if判断是哪种事件在执行哪个事件函数-->
+		
+		
+		<script>
+		//链接外部网站
+        $('article #Dmenu button').click(function(){
+           var abc=$('article #Dmenu input').val();
+           $(this).children().attr('href',abc)
+        })
+		</script>
+		
+		<script>
+//		    主菜单$('.menu img')
+          $('.menu img').add('.menu #menu_img').hover(function(){
+              $('.menu div').show();
+              $('article #Dmenu').css('opacity',0.1);
+          },function(event){
+//            .delay(1000)$.contains()
+//          if($('.menu div')==event.target){
+//             alert('???')
+//          }else{
+//             setTimeout(function(){
+                $('.menu div').hide();    
+//            },400)
+                $('article #Dmenu').css('opacity',1);
+//          }
+          })
+		</script>
+		
+		<script>
+//		     副菜单的闪光条
+          function mobile(){
+              $('#shine').animate({left:'550px'},500,function(){
+                    $('#shine').css('left','-350px')
+              })
+          }
+          setInterval(mobile,5000)
+		</script>
+		
+		<!--<script>
+//		  副菜单的table点击，层级
+         $('table').click(function(){
+            alert('成绩')
+         })
+		</script>-->
+		
+		<script>
+//		       切换背景图片
+            $('#a_switch').click(function(){
+               numberSwitch++;  
+               $('body').css('background-image','url(img/a'+numberSwitch+'.jpg)')
+               if(numberSwitch==13){
+                  numberSwitch=1; 
+               }
+            })
+		</script>
+		
+		<script>
+//		   登录框
+          $('.logIn').click(function(){
+               $('#login').toggle();
+               $('#login_cover').toggle();
+          });
+          //注册
+          $('#login form input[type=button]').click(function(){
+          	open('http://127.0.0.1:8020/ownTime/onlod.html')
+          })
+		</script>
+		
+		
+		<!--副菜单table里面td点击事件-->
+		<script>
+			$('#Dmenu table tr').eq(4).children().eq(0).click(function(){
+				open('picture/picture1.html')
+			})
+		</script>
+		
+		
+	</body>
+</html>

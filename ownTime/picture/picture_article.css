@@ -1,0 +1,44 @@
+article{margin: 100px auto 30px auto;background:rgba(0,0,0,0.1);}
+#first_ul{list-style-type: none;margin:0px 40px;height:auto;background:rgba(0,0,0,0.1);
+        margin-bottom: 40px;/*width: 100%; background: red;*/} /*2020px*/
+#first_ul li{width: 270px;height:380px;border: 1px solid;float: left;
+          margin: 11px;text-align: center;vertical-align: middle;}
+#first_ul li img{display: none;}
+/*img:hover ul>li{border-color: red;}*/
+#check{/*width:0px;height: 0px;border: 5px solid red;*/position:fixed;
+    left:0px; top:60px;text-align: center;background:rgba(0,0,0,0.4);}
+
+/*#check div:first{width: 10%;height: 100%;background: red;}*/
+#check #check_div1{width: 8%;height: 100%;background:rgba(0,0,0,0.8);position: absolute;
+                  left: 0px;}
+#check #check_div2{width: 8%;height: 100%;background:rgba(0,0,0,0.8);position: absolute;
+                  right:0px;}
+#check_left{width: 40px;height: 40px;display: none;position: fixed;}
+#check_right{width: 40px;height: 40px;display: none;position: fixed;}
+#check_close{width: 40px;height: 40px;display: none;position: fixed;}
+
+#check_left img{width: 40px;height: 40px;}
+#check_right img{width: 40px;height: 40px;}
+#check_close img{width: 40px;height: 40px;}
+
+
+#second_ul{clear: both;width:640px;height:84px;text-align: center;
+          margin:50px auto;margin-bottom: 20px;font-weight: 500;display: flex;
+          justify-content: space-around;align-items: center;}
+#second_ul li a,#second_ul input{width: 40px;height: 40px;border-radius: 50%;background: white;
+           float: left;overflow: hidden;margin-left:10px;line-height: 40px;
+           border: 1px solid;}
+#second_ul span{width:40px;height: 40px;margin-left:20px;
+           float: left;overflow: hidden;line-height: 40px;}
+#second_ul span:last-child{margin-left:0px;}
+#second_ul #ul_input{margin-left: 0px;text-indent:15px;font-size: 16px;}
+
+#second_ul li a:hover{background:rgba(255,0,0,0.8);border: 1px solid red;color: white;cursor: pointer;}
+#second_ul a{color: black;}
+/*#second_ul a:hover{color: white;}*/
+#second_ul #li_next,#second_ul #li_not{width: 40px;height: 40px;border-radius: 50%;background: white;
+           float: left;overflow: hidden;margin-left:10px;line-height: 40px;
+           border: 1px solid;}
+#second_ul #li_next{width: 60px;}
+#second_ul #li_not:hover{background:white;border: 1px solid;color:black;cursor: not-allowed;}
+#second_ul #li_next:hover{background:rgba(255,0,0,0.8);border: 1px solid red;color: white;cursor: pointer;}
